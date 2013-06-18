@@ -1,5 +1,4 @@
-ZoomImageView
-=============
+![Google Play Image](/ZoomImageViewGooglePlay.jpg)
 
 ZoomImageView is an Android ImageView with zoom functionality, all in one class.
 
