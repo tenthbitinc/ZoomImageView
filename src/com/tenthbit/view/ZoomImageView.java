@@ -225,22 +225,25 @@ public class ZoomImageView extends ImageView implements View.OnTouchListener,
                         lastTouchY = y;
 
                         // Compute velocity within the last 1000ms
-                        velocityTracker.addMovement(event);
-                        velocityTracker.computeCurrentVelocity(1000);
+			if(velocityTracker != null) {
+                        	velocityTracker.addMovement(event);
+	                        velocityTracker.computeCurrentVelocity(1000);
 
-                        final float vX = velocityTracker.getXVelocity(), vY = velocityTracker
+        	                final float vX = velocityTracker.getXVelocity(), vY = velocityTracker
                                 .getYVelocity();
 
-                        // If the velocity is greater than minVelocity perform
-                        // a fling
-                        if ((Math.max(Math.abs(vX), Math.abs(vY)) >= scaledMinimumFlingVelocity)
-                                && (getDrawable() != null)) {
-                            currentFlingRunnable = new FlingRunnable(getContext());
-                            currentFlingRunnable.fling(getWidth(), getHeight(), (int) -vX,
-                                    (int) -vY);
-                            post(currentFlingRunnable);
-                        }
-                    }
+	                        // If the velocity is greater than minVelocity perform
+        	                // a fling
+                	        if ((Math.max(Math.abs(vX), Math.abs(vY)) >= scaledMinimumFlingVelocity)
+                        	        && (getDrawable() != null)) {
+                            		currentFlingRunnable = new FlingRunnable(getContext());
+	                            	currentFlingRunnable.fling(getWidth(), getHeight(), (int) -vX,
+        	                            (int) -vY);
+                	            	post(currentFlingRunnable);
+                        	} 
+		        }//if velocityTracker != null
+                    } //if isDragging
+		    break;
                 }
                 case MotionEvent.ACTION_CANCEL:
                     lastPointerCount = 0;
