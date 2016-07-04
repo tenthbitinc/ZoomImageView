@@ -225,7 +225,7 @@ public class ZoomImageView extends ImageView implements View.OnTouchListener,
                         lastTouchY = y;
 
                         // Compute velocity within the last 1000ms
-			if(velocityTracker != null) {
+			if (velocityTracker != null) {
                         	velocityTracker.addMovement(event);
 	                        velocityTracker.computeCurrentVelocity(1000);
 
@@ -241,8 +241,8 @@ public class ZoomImageView extends ImageView implements View.OnTouchListener,
         	                            (int) -vY);
                 	            	post(currentFlingRunnable);
                         	} 
-		        }//if velocityTracker != null
-                    } //if isDragging
+		        }
+                    }
 		    break;
                 }
                 case MotionEvent.ACTION_CANCEL:
